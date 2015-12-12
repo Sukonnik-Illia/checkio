@@ -1,5 +1,3 @@
-import pdb
-
 def flatten(dictionary):
     stack = [((), dictionary)]
     result = {}
