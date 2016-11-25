@@ -1,1 +1,1 @@
-# My solutions to problems in [https://checkio.org](checkio.org) #
+# My solutions to problems in [checkio.org](https://checkio.org) #
