@@ -1,15 +1,19 @@
+def prew_line(pawn):
+    return str(int(pawn[1])-1)
+
+
 def needed_prew_pawns(pawn):
     s = 'abcdefgh'
-    prew_line = lambda: str(int(pawn[1])-1)
+
     if pawn[1] == '1':
         return tuple()
     elif pawn[0] == 'a' and pawn[0] != 'h':
-        return ('b' + prew_line(),)
+        return ('b' + prew_line(pawn),)
     elif pawn[0] == 'h':
-        return ('g' + prew_line(),)
+        return ('g' + prew_line(pawn),)
     else:
-        return(s[s.index(pawn[0])-1]+prew_line(),
-               s[s.index(pawn[0])+1]+prew_line())
+        return(s[s.index(pawn[0])-1]+prew_line(pawn),
+               s[s.index(pawn[0])+1]+prew_line(pawn))
 
 
 def safe_pawns(pawns):
@@ -18,6 +22,7 @@ def safe_pawns(pawns):
         if any(map(lambda i: i in pawns, needed_prew_pawns(pawn))):
             n += 1
     return n
+
 
 if __name__ == '__main__':
     assert safe_pawns({"b4", "d4", "f4", "c3", "e3", "g5", "d2"}) == 6
