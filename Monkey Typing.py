@@ -1,6 +1,6 @@
 def count_words(text, words):
     text = text.lower()
-    return len([word for word in words if word in text])
+    return sum([word in text for word in words])
 
 
 if __name__ == '__main__':
