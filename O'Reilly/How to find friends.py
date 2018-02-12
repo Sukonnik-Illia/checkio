@@ -11,6 +11,7 @@ def check_connection(network, first, second):
 
     return True if second.intersection(first) else False
 
+
 def dict_create(network):
     k, names = [set(x.split("-")) for x in network], set([])
     for t in k:
