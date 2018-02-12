@@ -33,12 +33,32 @@ all(
 )
 all(all(ch == "X" or ch == "." for ch in row) for row in cipher_grille)
 """
+
+
+def rotate(massive):
+    return list(zip(*massive[::-1]))
+
+
 def recall_password(cipher_grille, ciphered_password):
-    return ""
+    massives = (
+        cipher_grille,
+        rotate(cipher_grille),
+        rotate(rotate(cipher_grille)),
+        rotate(rotate(rotate(cipher_grille)))
+    )
+
+    l = [
+        char
+        for cipher_grille in massives
+        for zipped_row in zip(cipher_grille, ciphered_password)
+        for cg, char in zip(*zipped_row)
+        if cg == 'X'
+    ]
+
+    return ''.join(l)
 
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
     assert recall_password(
         ('X...',
          '..X.',
@@ -58,3 +78,4 @@ if __name__ == '__main__':
          'rsqx',
          'xqzz',
          'fyzr')) == 'rxqrwsfzxqxzhczy', 'Second example'
+    print('done')
