@@ -26,8 +26,6 @@ def checkio(food):
     return max(food, prev_pigeons)
 
 
-
-
 if __name__ == '__main__':
     assert checkio(1) == 1, "1st example"
     assert checkio(2) == 1, "2nd example"
