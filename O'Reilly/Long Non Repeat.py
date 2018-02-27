@@ -15,31 +15,16 @@ Input: String.
 Output: String.
 
 """
-expected = [
-    ('aaaaa', 'a'),
-    ('abdjwawk', 'abdjw'),
-    ('abcabcffab', 'abcf'),
-    ('wq', 'wq'),
-    ('fghfrtyfgh', 'ghfrty'),
-]
-
-
-def test(t_data):
-    result = non_repeat(t_data[0])
-    if result != t_data[1]:
-        raise Exception('line = "{}"| expected = "{}"| result = "{}"'.format(
-            t_data[0], t_data[1], result)
-        )
 
 
 def unique_substrings(line):
     index = start = 0
-    for index, char in enumerate(line):
+    for index in range(len(line)):
         substr = line[start: index]
         if len(substr) == len(set(substr)):
             yield substr
         else:
-            start = start + 1
+            start += 1
 
     substr = line[start: index+1]
     if len(substr) == len(set(substr)):
@@ -54,6 +39,7 @@ def non_repeat(line):
 
 
 if __name__ == '__main__':
-    for t_data in expected:
-        test(t_data)
+    assert non_repeat('aaaaa') == 'a', "First"
+    assert non_repeat('abdjwawk') == 'abdjw', "Second"
+    assert non_repeat('abcabcffab') == 'abcf', "Third"
     print('Done!')
