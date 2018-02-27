@@ -18,18 +18,18 @@ class Friends:
             return True
 
     def names(self):
-        return set(
+        return {
             name
             for connection in self._connections
             for name in connection
-        )
+        }
 
     def connected(self, name):
-        return set(
+        return {
             friend
             for connection in self._connections if name in connection
             for friend in connection if name != friend
-        )
+        }
 
 
 if __name__ == '__main__':
@@ -42,4 +42,4 @@ if __name__ == '__main__':
     assert letter_friends.names() == {"a", "b", "c"}, "Names"
     assert letter_friends.connected("d") == set(), "Non connected name"
     assert letter_friends.connected("a") == {"b", "c"}, "Connected name"
-    print('Done')
+    print('Done!')
